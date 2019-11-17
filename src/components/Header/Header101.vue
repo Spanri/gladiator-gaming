@@ -28,12 +28,6 @@ export default Vue.extend({
         status: "Роза упала на лапу Азора"
       };
     }
-  },
-
-  methods: {
-    clickMe() {
-      this.$buefy.notification.open("Clicked!!");
-    }
   }
 });
 </script>

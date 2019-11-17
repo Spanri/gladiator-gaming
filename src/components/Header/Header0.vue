@@ -16,12 +16,6 @@ export default Vue.extend({
 
   props: {
     msg: String
-  },
-
-  methods: {
-    clickMe() {
-      this.$buefy.notification.open("Clicked!!");
-    }
   }
 });
 </script>

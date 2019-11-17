@@ -10,7 +10,8 @@ const routes = [
     component: () => import("../views/Home.vue"),
     meta: {
       title: "Главная",
-      profile: true
+      myProfile: true,
+      otherProfile: false,
     }
   },
   {
@@ -19,7 +20,8 @@ const routes = [
     component: () => import("../views/About.vue"),
     meta: {
       title: "О сайте",
-      profile: false
+      myProfile: false,
+      otherProfile: false,
     }
   }
 ];

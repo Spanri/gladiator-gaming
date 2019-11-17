@@ -5,7 +5,7 @@
       <div class="content__profile-info">
         <span>{{ profile.nickname }}</span>
         <span>{{ profile.status }}</span>
-        <span>AUTH TRUE PROFILE TRUE</span>
+        <span>AUTH TRUE PROFILE FALSE</span>
       </div>
     </div>
   </div>
@@ -27,12 +27,6 @@ export default Vue.extend({
         nickname: "Nagibator_123",
         status: "Роза упала на лапу Азора"
       };
-    }
-  },
-
-  methods: {
-    clickMe() {
-      this.$buefy.notification.open("Clicked!!");
     }
   }
 });
