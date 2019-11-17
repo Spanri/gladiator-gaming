@@ -22,6 +22,11 @@ $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
+$black: #11161B;
+$black-bis: #181E26;
+$white: white;
+$accent: #83E4E4;
+
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
