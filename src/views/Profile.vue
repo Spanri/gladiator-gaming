@@ -1,23 +1,34 @@
 <template>
   <div class="profile">
-    <router-link to="/games" class="profile__button button button__left">
+    <ButtonLink class="profile__button" to="games" side="right">
       Игры
-    </router-link>
-    <router-link to="/finances" class="profile__button button button__left">
+    </ButtonLink>
+    <ButtonLink class="profile__button" to="finances" side="right">
       Финансы
-    </router-link>
+    </ButtonLink>
     <router-view class="profile__content" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "Profile"
+  name: "Profile",
+
+  components: {
+    ButtonLink: () => import("@/ui-components/ButtonLink.vue")
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .profile {
-  @include button;
+  &__button {
+    min-width: 120px;
+    margin-bottom: 40px;
+
+    & + & {
+      margin-left: 10px;
+    }
+  }
 }
 </style>

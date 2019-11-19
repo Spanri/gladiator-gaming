@@ -2,28 +2,28 @@
   .button-header {
     padding: 5px 10px;
 
-    font: normal, normal, bold, 14px/16px, Roboto Mono, Serif;
-    color: $black;
-
     display: flex;
     align-items: center;
     height: min-content;
+    width: min-content;
 
     position: relative;
 
     &__left {
-      &.button:before {
+      &.button-header:before {
         transform: skew(-170deg);
       }
     }
 
     &__right {
-      &.button:before {
+      &.button-header:before {
         transform: skew(170deg);
       }
     }
 
     & > * {
+      font: normal, normal, bold, 14px/16px, Roboto Mono, Serif;
+      color: $black;
       z-index: 2;
     }
 

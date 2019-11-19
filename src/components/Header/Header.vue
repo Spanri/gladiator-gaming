@@ -1,5 +1,7 @@
 <template>
-  <component :is="headerComponent" />
+  <div class="header-wrapper">
+    <component :is="headerComponent" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -40,3 +42,36 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.header-wrapper {
+  max-width: 900px;
+  height: min-content;
+  background: $black;
+  position: relative;
+  margin-bottom: 50px;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 70px;
+    background: $black;
+    z-index: -1;
+  }
+
+  &:before {
+    left: -40px;
+    transform: skewX(15deg);
+    border-bottom-left-radius: 20px;
+  }
+
+  &:after {
+    right: -40px;
+    transform: skewX(-15deg);
+    border-bottom-right-radius: 20px;
+  }
+}
+</style>

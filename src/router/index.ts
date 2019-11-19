@@ -25,7 +25,7 @@ const routes = [
     children: [
       {
         path: "",
-        redirect: "/games",
+        redirect: "games",
         meta: {
           title: "Профиль, игры",
           myProfile: true,
@@ -70,6 +70,12 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.afterEach((to) => {
+  Vue.nextTick(() => {
+    document.title = to.meta.title ? to.meta.title : 'Gladiator Gaming';
+  });
 });
 
 export default router;

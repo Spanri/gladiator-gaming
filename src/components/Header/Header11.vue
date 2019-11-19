@@ -1,11 +1,8 @@
 <template>
   <div class="header">
-    <div
-      :data-title="title"
-      class="header__title button-header button-header__left"
-    >
-      <span class="header__title-text">{{ title }}</span>
-    </div>
+    <ButtonHeader to="/arena" side="left" class="header__title">
+      Арена
+    </ButtonHeader>
     <div class="header__content">
       <div class="header__content-img">Фото</div>
       <div class="header__content-info">
@@ -23,10 +20,7 @@
       </div>
     </div>
     <div class="header__right-buttons">
-      <router-link
-        to="/profile"
-        class="header__profile button-header button-header__right"
-      >
+      <ButtonHeader to="/profile" side="right" class="header__profile">
         <div class="header__profile-data">
           <span
             :data-title="nickname.length > 16 ? nickname : undefined"
@@ -51,7 +45,7 @@
         <div class="header__profile-logo">
           Лого
         </div>
-      </router-link>
+      </ButtonHeader>
     </div>
   </div>
 </template>
@@ -61,6 +55,10 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "HeaderAuthTrueProfileTrue",
+
+  components: {
+    ButtonHeader: () => import("@/ui-components/ButtonHeader.vue")
+  },
 
   computed: {
     title() {
@@ -96,15 +94,10 @@ export default Vue.extend({
 <style scoped lang="scss">
 .header {
   @include buttonHeader;
-  max-width: 900px;
-  height: 100%;
-  background: $black;
 
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
-  position: relative;
 
   &__title {
     margin: 35px 20px 20px 0;
@@ -116,7 +109,7 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
 
-    font: 12px/14px Roboto Mono;
+    font: 12px/14px Roboto Mono, Serif;
 
     &-img {
       min-width: 64px;
@@ -201,28 +194,6 @@ export default Vue.extend({
     & > * {
       text-align: right;
     }
-  }
-
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 70px;
-    background: $black;
-  }
-
-  &:before {
-    left: -40px;
-    transform: skewX(15deg);
-    border-bottom-left-radius: 20px;
-  }
-
-  &:after {
-    right: -40px;
-    transform: skewX(-15deg);
-    border-bottom-right-radius: 20px;
   }
 }
 

@@ -1,11 +1,10 @@
 <template>
   <div id="app">
     <Header class="app__header" />
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <main class="app__main">
+      <router-view class="app__main-inner" />
+    </main>
+    <Footer class="app__footer" />
   </div>
 </template>
 
@@ -15,7 +14,8 @@ export default Vue.extend({
   name: "App",
 
   components: {
-    Header: () => import("@/components/Header/Header.vue")
+    Header: () => import("@/components/Header/Header.vue"),
+    Footer: () => import("@/components/Footer.vue")
   }
 });
 </script>
@@ -24,21 +24,24 @@ export default Vue.extend({
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   width: 100vw;
+  min-height: 100vh;
 
-  & > * {
-    margin: 0 auto;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-#nav {
-  padding: 30px;
+@media (min-width: 1000px) {
+  .app {
+    &__header,
+    &__footer {
+      margin: 0 auto;
+    }
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    &__main {
+      width: 580px;
+      margin: 0 auto auto;
     }
   }
 }
