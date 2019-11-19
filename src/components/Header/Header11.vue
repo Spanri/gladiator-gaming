@@ -1,18 +1,32 @@
 <template>
   <div class="header">
-    <div :data-title="title" class="header__title button">
+    <div
+      :data-title="title"
+      class="header__title button-header button-header__left"
+    >
       <span class="header__title-text">{{ title }}</span>
     </div>
     <div class="header__content">
       <div class="header__content-img">Фото</div>
       <div class="header__content-info">
-        <span>{{ profile.nickname }}</span>
-        <span>{{ profile.status }}</span>
+        <span>{{
+          profile.nickname.length > 35
+            ? profile.nickname.substring(0, 35) + "..."
+            : profile.nickname
+        }}</span>
+        <span>{{
+          profile.status.length > 35
+            ? profile.status.substring(0, 35) + "..."
+            : profile.status
+        }}</span>
         <span>HEADER 11</span>
       </div>
     </div>
     <div class="header__right-buttons">
-      <div class="header__profile button">
+      <router-link
+        to="/profile"
+        class="header__profile button-header button-header__right"
+      >
         <div class="header__profile-data">
           <span
             :data-title="nickname.length > 16 ? nickname : undefined"
@@ -37,8 +51,7 @@
         <div class="header__profile-logo">
           Лого
         </div>
-      </div>
-      <div class="header__"></div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -82,7 +95,7 @@ export default Vue.extend({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .header {
-  @include button;
+  @include buttonHeader;
   max-width: 900px;
   height: 100%;
   background: $black;
@@ -98,10 +111,12 @@ export default Vue.extend({
   }
 
   &__content {
-    margin: 30px;
-    margin-bottom: 15px;
+    margin: 50px 30px 15px 30px;
+
     display: flex;
     flex-direction: row;
+
+    font: 12px/14px Roboto Mono;
 
     &-img {
       min-width: 64px;
@@ -115,14 +130,19 @@ export default Vue.extend({
       display: flex;
       flex-direction: column;
 
-      padding: 5px 10px 5px 20px;
+      padding: 0px 10px 5px 20px;
       color: $white;
       min-width: 300px;
+
+      & > * + * {
+        padding-top: 11px;
+      }
     }
   }
 
   &__profile {
     margin: 10px 0 20px 20px;
+    text-decoration: none;
 
     &-data {
       display: flex;

@@ -1,5 +1,7 @@
-@mixin buttonHeader {
-  .button-header {
+@mixin button {
+  .button {
+    border: 0;
+    background: none;
     padding: 5px 10px;
 
     font: normal, normal, bold, 14px/16px, Roboto Mono, Serif;
@@ -38,7 +40,6 @@
 
       z-index: 1;
       background: $accent;
-      border: 1px solid transparent;
       border-radius: 5px;
     }
 
@@ -48,7 +49,9 @@
 
       &:before {
         background: transparent;
-        border: 1px solid $accent;
+        background: $pre-accent;
+        background: linear-gradient(90deg, $accent 0%, $pre-accent 100%);
+        box-shadow: 0 0 25px $pre-accent;
       }
     }
   }

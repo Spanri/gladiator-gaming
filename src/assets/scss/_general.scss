@@ -1,4 +1,11 @@
+html {
+  height: 0;
+  display: flex; // для IE
+  flex-direction: row;
+}
+
 body {
   background: $black-bis;
   min-height: 100vh;
+  margin: 0;
 }

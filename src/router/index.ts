@@ -7,21 +7,61 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("../views/Home.vue"),
+    component: () => import("@/views/Home.vue"),
     meta: {
       title: "Главная",
       myProfile: true,
-      otherProfile: false,
+      otherProfile: false
     }
+  },
+  {
+    path: "/profile",
+    component: () => import("@/views/Profile.vue"),
+    meta: {
+      title: "Профиль",
+      myProfile: true,
+      otherProfile: false
+    },
+    children: [
+      {
+        path: "",
+        redirect: "/games",
+        meta: {
+          title: "Профиль, игры",
+          myProfile: true,
+          otherProfile: false
+        }
+      },
+      {
+        path: "games",
+        name: "games",
+        component: () => import("@/components/Profile/Games.vue"),
+        meta: {
+          title: "Профиль, игры",
+          myProfile: true,
+          otherProfile: false
+        }
+      },
+      {
+        path: "finances",
+        name: "finances",
+        component: () => import("@/components/Profile/Finances.vue"),
+        meta: {
+          title: "Профиль, финансы",
+          myProfile: true,
+          otherProfile: false
+        }
+      },
+    ]
   },
   {
     path: "/about",
     name: "about",
-    component: () => import("../views/About.vue"),
+    component: () => import("@/views/About.vue"),
     meta: {
       title: "О сайте",
       myProfile: false,
-      otherProfile: false,
+      otherProfile: false
     }
   }
 ];
