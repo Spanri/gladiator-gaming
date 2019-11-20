@@ -1,0 +1,12 @@
+@mixin header {
+  &__header {
+    position: relative;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+
+  &__content {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+}

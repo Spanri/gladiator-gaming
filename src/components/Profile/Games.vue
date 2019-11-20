@@ -1,15 +1,6 @@
 <template>
   <div class="games">
-    <div class="games__stats">
-      <div
-        v-for="(item, index) in items"
-        :key="index"
-        class="games__stats-item"
-      >
-        <span class="games__title">{{ item.title }}</span>
-        <span class="games__value">{{ item.value }}</span>
-      </div>
-    </div>
+    <GamesStats :stats="stats" class="games__stats" />
   </div>
 </template>
 
@@ -17,15 +8,29 @@
 export default {
   name: "Games",
 
+  components: {
+    GamesStats: () => import("@/components/Profile/GamesStats.vue")
+  },
+
+  data() {
+    return {
+    };
+  },
+
   computed: {
-    items() {
-      return [
-        { title: "a0", value: "b0" },
-        { title: "a1", value: "b1" },
-        { title: "a2", value: "b2" },
-        { title: "a3", value: "b3" },
-        { title: "a4", value: "b4" }
-      ];
+    stats() {
+      return {
+        items: [
+          { title: "Убийства", value: 12649 },
+          { title: "Смерти", value: 7344 },
+          { title: "Сыгранные матчи", value: 100 },
+          { title: "Выигранные матчи", value: 23 },
+          { title: "Сыгранные раунды", value: 7100 },
+          { title: "Выигранные раунды", value: 3513 },
+          { title: "MVP", value: 849 }
+        ],
+        percent: 45
+      };
     }
   }
 };
@@ -34,24 +39,6 @@ export default {
 <style lang="scss" scoped>
 .games {
   &__stats {
-    border: 1px solid $accent;
-    border-radius: 15px;
-    padding: 10px 30px 15px;
-
-    &-item {
-      width: 130px;
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  &__title {
-    color: $white;
-    font: 14px/16px Roboto Mono, Serif;
-  }
-
-  &__value {
-    color: $blue;
   }
 }
 </style>

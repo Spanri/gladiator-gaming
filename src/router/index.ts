@@ -9,27 +9,21 @@ const routes = [
     name: "home",
     component: () => import("@/views/Home.vue"),
     meta: {
-      title: "Главная",
-      myProfile: true,
-      otherProfile: false
+      title: "Главная"
     }
   },
   {
     path: "/profile",
     component: () => import("@/views/Profile.vue"),
     meta: {
-      title: "Профиль",
-      myProfile: true,
-      otherProfile: false
+      title: "Профиль"
     },
     children: [
       {
         path: "",
         redirect: "games",
         meta: {
-          title: "Профиль, игры",
-          myProfile: true,
-          otherProfile: false
+          title: "Профиль, игры"
         }
       },
       {
@@ -37,9 +31,7 @@ const routes = [
         name: "games",
         component: () => import("@/components/Profile/Games.vue"),
         meta: {
-          title: "Профиль, игры",
-          myProfile: true,
-          otherProfile: false
+          title: "Профиль, игры"
         }
       },
       {
@@ -47,9 +39,7 @@ const routes = [
         name: "finances",
         component: () => import("@/components/Profile/Finances.vue"),
         meta: {
-          title: "Профиль, финансы",
-          myProfile: true,
-          otherProfile: false
+          title: "Профиль, финансы"
         }
       },
     ]
@@ -59,9 +49,7 @@ const routes = [
     name: "about",
     component: () => import("@/views/About.vue"),
     meta: {
-      title: "О сайте",
-      myProfile: false,
-      otherProfile: false
+      title: "О сайте"
     }
   }
 ];

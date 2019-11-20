@@ -1,62 +1,52 @@
 <template>
-  <div class="header">
-    <ButtonHeader to="/arena" side="left" class="header__title">
-      Арена
-    </ButtonHeader>
-    <div class="header__content">
-      <div class="header__content-img">Фото</div>
-      <div class="header__content-info">
-        <span>{{
-          profile.nickname.length > 35
-            ? profile.nickname.substring(0, 35) + "..."
-            : profile.nickname
-        }}</span>
-        <span>{{
-          profile.status.length > 35
-            ? profile.status.substring(0, 35) + "..."
-            : profile.status
-        }}</span>
-        <span>HEADER 11</span>
+  <Header>
+    <div class="header">
+      <ButtonHeader to="/" side="left" class="header__title">
+        Кнопка?
+      </ButtonHeader>
+      <div class="header__content">
+        чето
+      </div>
+      <div class="header__right-buttons">
+        <ButtonHeader to="/profile" side="right" class="header__profile">
+          <div class="header__profile-data">
+            <span
+              :data-title="nickname.length > 16 ? nickname : undefined"
+              class="header__profile-nickname"
+            >
+              {{
+                nickname.length > 16
+                  ? nickname.substring(0, 16) + "..."
+                  : nickname
+              }}
+            </span>
+            <span
+              :data-title="balance.length > 16 ? balance : undefined"
+              class="header__profile-balance"
+            >
+              {{
+                balance.length > 13 ? balance.substring(0, 13) + "..." : balance
+              }}
+              ₽
+            </span>
+          </div>
+          <div class="header__profile-logo">
+            Лого
+          </div>
+        </ButtonHeader>
       </div>
     </div>
-    <div class="header__right-buttons">
-      <ButtonHeader to="/profile" side="right" class="header__profile">
-        <div class="header__profile-data">
-          <span
-            :data-title="nickname.length > 16 ? nickname : undefined"
-            class="header__profile-nickname"
-          >
-            {{
-              nickname.length > 16
-                ? nickname.substring(0, 16) + "..."
-                : nickname
-            }}
-          </span>
-          <span
-            :data-title="balance.length > 16 ? balance : undefined"
-            class="header__profile-balance"
-          >
-            {{
-              balance.length > 13 ? balance.substring(0, 13) + "..." : balance
-            }}
-            ₽
-          </span>
-        </div>
-        <div class="header__profile-logo">
-          Лого
-        </div>
-      </ButtonHeader>
-    </div>
-  </div>
+  </Header>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "HeaderAuthTrueProfileTrue",
+  name: "HeaderMyProfile",
 
   components: {
+    Header: () => import("@/components/Header/Header.vue"),
     ButtonHeader: () => import("@/ui-components/ButtonHeader.vue")
   },
 

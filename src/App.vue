@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Header class="app__header" />
     <main class="app__main">
       <router-view class="app__main-inner" />
     </main>
@@ -14,7 +13,6 @@ export default Vue.extend({
   name: "App",
 
   components: {
-    Header: () => import("@/components/Header/Header.vue"),
     Footer: () => import("@/components/Footer.vue")
   }
 });
@@ -40,7 +38,6 @@ export default Vue.extend({
     }
 
     &__main {
-      width: 580px;
       margin: 0 auto auto;
     }
   }
