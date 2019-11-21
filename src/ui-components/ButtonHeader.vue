@@ -1,5 +1,9 @@
 <template>
-  <router-link :to="to" class="button-header" :class="`button-header__${side}`">
+  <router-link
+    :to="to"
+    class="button-header"
+    :class="[`button-header__${side}`, disabled ? 'disabled' : '']"
+  >
     <span>
       <slot />
     </span>
@@ -17,6 +21,11 @@ export default Vue.extend({
       default: "right"
     },
 
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+
     to: {
       type: String,
       default: "/"
@@ -26,6 +35,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.disabled {
+  &.button-header:before {
+    background: none;
+  }
+}
+
 .button-header {
   border: 0;
   background: none;
@@ -68,6 +83,7 @@ export default Vue.extend({
 
     z-index: 1;
     background: $accent;
+    border: 1px solid transparent;
     border-radius: 5px;
   }
 
