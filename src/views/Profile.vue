@@ -4,7 +4,7 @@
       :is="myProfile ? 'HeaderMyProfile' : 'HeaderOtherProfile'"
       class="profile__header"
     />
-    <HeaderOtherProfile v-if="otherProfile" class="profile__header" />
+    <button @click="my = !my">Кнопка</button>
     <div class="profile__content">
       <ButtonLink class="profile__button" to="games" side="right">
         Игры
@@ -33,10 +33,16 @@ export default {
     ButtonLink: () => import("@/ui-components/ButtonLink.vue")
   },
 
+  data() {
+    return {
+      my: true
+    };
+  },
+
   computed: {
     myProfile() {
-      // ес ли id юзера искомого совпадает с id юзера из store
-      return false;
+      // если id юзера искомого совпадает с id юзера из store
+      return this.my;
     }
   }
 };

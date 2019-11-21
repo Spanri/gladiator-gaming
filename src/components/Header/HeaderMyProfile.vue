@@ -5,6 +5,15 @@
         Арена
       </ButtonHeader>
       <HeaderProfileContent class="header__content" />
+      <button class="header__settings">
+        <span class="header__settings-text">Настройки</span>
+        <object
+          class="header__settings-svg"
+          type="image/svg+xml"
+          :data="svgSettings"
+          >нас</object
+        >
+      </button>
       <div class="header__right-buttons">
         <ButtonHeader
           to="/profile"
@@ -13,12 +22,10 @@
           disabled
         >
           <span
-            :data-title="balance.length > 14 ? balance : undefined"
+            :data-title="balance.length > 8 ? balance : undefined"
             class="header__profile-balance"
           >
-            {{
-              balance.length > 11 ? balance.substring(0, 11) + "..." : balance
-            }}
+            {{ balance.length > 5 ? balance.substring(0, 5) + "..." : balance }}
             ₽
           </span>
         </ButtonHeader>
@@ -38,6 +45,12 @@ export default Vue.extend({
     ButtonHeader: () => import("@/ui-components/ButtonHeader.vue"),
     HeaderProfileContent: () =>
       import("@/components/Header/HeaderProfileContent.vue")
+  },
+
+  data() {
+    return {
+      svgSettings: require("@/assets/settings.svg")
+    };
   },
 
   computed: {
@@ -63,7 +76,7 @@ export default Vue.extend({
        * если слишком больше число, оно
        * неправильно обрабатывает
        */
-      let num = 923456734534534534543346452245;
+      let num = 922;
       return num.toLocaleString();
     }
   }
@@ -89,10 +102,82 @@ export default Vue.extend({
 
     &-balance {
       white-space: nowrap;
+
+      &[data-title]:hover:after,
+      &[data-title]:hover:before {
+        opacity: 1;
+        transition: all 0.3s ease-in;
+        visibility: visible;
+      }
+
+      &[data-title]:after,
+      &[data-title]:before {
+        content: attr(data-title);
+        padding: 5px 10px;
+        white-space: normal;
+        word-wrap: break-word;
+        opacity: 0;
+        z-index: 99999;
+        max-width: 120px;
+        visibility: hidden;
+        font-size: 100%;
+        position: absolute;
+        top: 2.2em;
+        right: 0;
+      }
+
+      &[data-title]:after {
+        // background: $black;
+        color: $black;
+      }
+
+      &[data-title]:before {
+        content: attr(data-title);
+        color: transparent;
+        transform: skew(170deg);
+        border: 1px solid $accent;
+        border-radius: 5px;
+        background-color: $accent;
+      }
+
+      &[data-title] {
+        position: relative;
+      }
     }
 
     & > * {
       text-align: right;
+    }
+  }
+
+  &__settings {
+    background: none;
+    border: 0;
+    color: white;
+    font: 18px/21px Roboto Mono, Serif;
+    margin-top: 80px;
+    margin-right: -100px;
+
+    display: flex;
+    flex-direction: row;
+
+    &-text {
+      margin-right: 15px;
+      margin-top: 5px;
+    }
+
+    &-svg {
+      width: 30px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $accent;
+
+      & #settings-svg {
+        cursor: pointer;
+        fill: $white;
+      }
     }
   }
 }

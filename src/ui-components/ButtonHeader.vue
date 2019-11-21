@@ -37,7 +37,9 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .disabled {
   &.button-header {
-    pointer-events: none;
+    &:hover {
+      cursor: default;
+    }
 
     & > * {
       color: $white;
@@ -59,7 +61,7 @@ export default Vue.extend({
 
   height: min-content;
   width: min-content;
-  min-width: 120px;
+  min-width: 90px;
 
   position: relative;
 

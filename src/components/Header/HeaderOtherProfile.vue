@@ -73,7 +73,7 @@ export default Vue.extend({
        * если слишком больше число, оно
        * неправильно обрабатывает
        */
-      let num = 9234567;
+      let num = 923456745454545454545;
       return num.toLocaleString();
     }
   }
@@ -106,6 +106,49 @@ export default Vue.extend({
       display: flex;
       align-items: center;
       margin: 8px;
+    }
+
+    &-nickname,
+    &-balance {
+      &[data-title]:hover:after,
+      &[data-title]:hover:before {
+        opacity: 1;
+        transition: all 0.3s ease-in;
+        visibility: visible;
+      }
+
+      &[data-title]:after,
+      &[data-title]:before {
+        content: attr(data-title);
+        opacity: 0;
+        z-index: 99999;
+        visibility: hidden;
+        max-width: 200px;
+        padding: 5px 10px;
+        white-space: normal;
+        word-wrap: break-word;
+        font-size: 100%;
+        position: absolute;
+        top: 1.5em;
+        right: 0;
+      }
+
+      &[data-title]:after {
+        // background: $black;
+        color: $black;
+      }
+
+      &[data-title]:before {
+        color: transparent;
+        transform: skew(170deg);
+        border: 1px solid $accent;
+        border-radius: 5px;
+        background-color: $accent;
+      }
+
+      &[data-title] {
+        position: relative;
+      }
     }
 
     & > * {
