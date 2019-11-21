@@ -174,9 +174,9 @@ export default Vue.extend({
       cursor: pointer;
       color: $accent;
 
-      & #settings-svg {
+      & svg path {
         cursor: pointer;
-        fill: $white;
+        fill: $white !important;
       }
     }
   }
