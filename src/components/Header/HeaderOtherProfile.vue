@@ -108,10 +108,6 @@ export default Vue.extend({
       margin: 8px;
     }
 
-    &-nickname,
-    &-balance {
-    }
-
     & > * {
       text-align: right;
     }

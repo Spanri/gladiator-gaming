@@ -13,11 +13,11 @@
           disabled
         >
           <span
-            :data-title="balance.length > 16 ? balance : undefined"
+            :data-title="balance.length > 14 ? balance : undefined"
             class="header__profile-balance"
           >
             {{
-              balance.length > 13 ? balance.substring(0, 13) + "..." : balance
+              balance.length > 11 ? balance.substring(0, 11) + "..." : balance
             }}
             ₽
           </span>

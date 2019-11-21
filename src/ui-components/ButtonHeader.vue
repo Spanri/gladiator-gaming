@@ -4,7 +4,7 @@
     class="button-header"
     :class="[`button-header__${side}`, disabled ? 'disabled' : '']"
   >
-    <span>
+    <span class="button-header__span">
       <slot />
     </span>
   </router-link>
@@ -36,21 +36,32 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .disabled {
-  &.button-header:before {
-    background: none;
+  &.button-header {
+    pointer-events: none;
+
+    & > * {
+      color: $white;
+    }
+
+    &:before {
+      background: none;
+      border-color: $accent;
+    }
   }
 }
 
 .button-header {
-  border: 0;
-  background: none;
-  padding: 5px 10px;
+  padding: 10px 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   height: min-content;
   width: min-content;
+  min-width: 120px;
 
   position: relative;
-  display: inline-block;
 
   &__left {
     &.button-header:before {
@@ -65,10 +76,10 @@ export default Vue.extend({
   }
 
   & > * {
-    font: normal normal bold 16px/19px Roboto Mono, Serif;
+    font: normal normal bold 14px/16px Roboto Mono, Serif;
     color: $black;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     z-index: 2;
   }
 
@@ -90,14 +101,13 @@ export default Vue.extend({
   &:hover {
     cursor: pointer;
 
-    & > * {
+    &.button-header > * {
       color: $white;
-      transition: 0.3s all ease;
     }
 
     &:before {
       background: transparent;
-      transition: 0.3s all ease;
+      border: 1px solid $accent;
     }
   }
 }

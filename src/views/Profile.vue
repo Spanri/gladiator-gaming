@@ -35,8 +35,8 @@ export default {
 
   computed: {
     myProfile() {
-      // если id юзера искомого совпадает с id юзера из store
-      return true;
+      // ес ли id юзера искомого совпадает с id юзера из store
+      return false;
     }
   }
 };

@@ -114,7 +114,7 @@ export default Vue.extend({
 
   &__general {
     color: $white;
-    min-width: 300px;
+    min-width: 200px;
     padding: 0px 10px 5px 20px;
 
     & > * {
