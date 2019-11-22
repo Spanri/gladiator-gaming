@@ -1,7 +1,13 @@
 <template>
   <div class="content">
     <section class="content__info">
-      <div class="content__img">Фото</div>
+      <img
+        v-if="profile.photo"
+        class="content__img"
+        alt="Фото"
+        src="@/assets/photo.jpg"
+      />
+      <img v-if="!profile.photo" class="content__img" alt="Фото" src="" />
       <div class="content__general">
         <p class="content__nickname">
           {{
@@ -18,9 +24,17 @@
           }}
         </p>
         <p
-          v-if="myProfile"
+          v-if="myProfile && profile.status == ''"
           v-show="!statusChange"
-          @click="inputStatus"
+          @click="showChangeStatus"
+          class="content__status content__status-change"
+        >
+          добавить статус
+        </p>
+        <p
+          v-if="myProfile && profile.status != ''"
+          v-show="!statusChange"
+          @click="showChangeStatus"
           class="content__status content__status-change"
         >
           {{
@@ -29,22 +43,30 @@
               : profile.status
           }}
         </p>
-        <!-- @focusout="inputStatus" -->
         <input
-          v-if="myProfile"
+          maxlength="27"
           v-show="statusChange"
-          v-click-outside="inputStatus"
+          ref="inputStatus"
+          autofocus
+          @focusout="hideChangeStatus"
           class="content__status-input"
           type="text"
           v-model="status"
-          @keyup.enter.native="changeStatus"
+          @keyup.enter="changeStatus"
         />
-        <p
+        <div
           class="content__soc-networks"
           :class="statusChange ? 'statusChange' : ''"
         >
-          HEADER 11
-        </p>
+          <router-link
+            v-for="(item, index) in socNetworks"
+            :key="index"
+            :to="profile.socNetworks[item.network]"
+          >
+            <component :is="item.component" :fill="fill[index]" />
+          </router-link>
+        </div>
+        <!-- @mouseover="fill[index] = 'white'" @mouseleave="fill[index] = '#83E4E4'" -->
       </div>
     </section>
     <section class="content__rating">
@@ -58,25 +80,31 @@
 
 <script lang="ts">
 import Vue from "vue";
-import ClickOutside from "vue-click-outside";
 
 type ComplexObjectProfile = {
   nickname: string;
+  photo: string;
   status: string;
+  socNetworks: object;
   csgo: object;
 };
 
 export default Vue.extend({
   name: "HeaderProfileContent",
 
-  directives: {
-    ClickOutside
-  },
-
   data() {
     return {
-      statusChange: false
+      statusChange: false,
+      fill: new Array(3).fill("#83E4E4")
     };
+  },
+
+  components: {
+    IconFacebook: () =>
+      import("@/ui-components/icons/socNetworks/IconFacebook.vue"),
+    IconYouTube: () =>
+      import("@/ui-components/icons/socNetworks/IconYouTube.vue"),
+    IconVK: () => import("@/ui-components/icons/socNetworks/IconVK.vue")
   },
 
   computed: {
@@ -84,22 +112,49 @@ export default Vue.extend({
       return true;
     },
 
-    status(): string {
-      return this.profile.status;
-    },
-
     title(): string {
       return this.$route.meta.title;
+    },
+
+    socNetworks(): object {
+      console.log(
+        [
+          { component: "IconFacebook", network: "facebook" },
+          { component: "IconYouTube", network: "youtube" },
+          { component: "IconVK", network: "vk" }
+        ].filter(el => this.profile.socNetworks[el.network] != "")
+      );
+      return [
+        { component: "IconFacebook", network: "facebook" },
+        { component: "IconYouTube", network: "youtube" },
+        { component: "IconVK", network: "vk" }
+      ].filter(el => this.profile.socNetworks[el.network] != "");
     },
 
     profile(): ComplexObjectProfile {
       return {
         nickname: "Nagibator_123",
+        photo: "Фото",
         status: "Роза упала на лапу Азора",
+        socNetworks: {
+          facebook: "",
+          youtube: "",
+          vk: "ссылка"
+        },
         csgo: {
           rating: 1234
         }
       };
+    },
+
+    status: {
+      get(): string {
+        return this.profile.status;
+      },
+
+      set(val: string): string {
+        return val;
+      }
     },
 
     nickname(): string {
@@ -124,13 +179,14 @@ export default Vue.extend({
       this.statusChange = false;
     },
 
-    inputStatus(status: boolean) {
-      if (status != true) {
-        this.statusChange = false;
-      } else {
-        this.statusChange = true;
-      }
-      console.log(this.statusChange);
+    showChangeStatus() {
+      this.statusChange = true;
+      const ref = this.$refs.inputStatus as HTMLInputElement;
+      this.$nextTick(() => ref.focus());
+    },
+
+    hideChangeStatus() {
+      this.statusChange = false;
     }
   }
 });
@@ -171,6 +227,18 @@ export default Vue.extend({
     width: 90%;
     margin-top: 7px !important;
     margin-left: -5px !important;
+  }
+
+  &__soc-networks {
+    * + * {
+      margin-left: 10px;
+    }
+
+    * {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   &__rating {

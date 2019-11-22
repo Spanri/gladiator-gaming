@@ -39,10 +39,11 @@ export default Vue.extend({
 .button-link {
   border: 0;
   background: none;
-  padding: 5px 10px;
+  padding: 10px 15px;
 
   height: min-content;
   width: min-content;
+  min-width: 90px;
 
   position: relative;
   display: inline-block;

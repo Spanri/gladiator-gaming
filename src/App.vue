@@ -24,6 +24,11 @@ export default Vue.extend({
   width: 100vw;
   min-height: 100vh;
 
+  background-image: url("./assets/background.jpg");
+  background-position: center 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;

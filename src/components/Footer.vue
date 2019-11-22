@@ -54,7 +54,7 @@ export default Vue.extend({
       bottom: 0;
       width: 70px;
       background: $black;
-      z-index: -1;
+      z-index: 1;
     }
 
     &:before {

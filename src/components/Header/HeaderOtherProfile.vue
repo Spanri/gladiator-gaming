@@ -6,7 +6,13 @@
       </ButtonHeader>
       <HeaderProfileContent class="header__content" />
       <div class="header__right-buttons">
-        <ButtonHeader to="/profile" side="right" class="header__profile">
+        <ButtonHeader
+          to="/profile"
+          side="right"
+          class="header__profile"
+          @mouseover.native="fillProfileButton = 'white'"
+          @mouseleave.native="fillProfileButton = '#11161B'"
+        >
           <div class="header__profile-data">
             <span
               :data-title="nickname.length > 16 ? nickname : undefined"
@@ -28,10 +34,37 @@
               ₽
             </span>
           </div>
-          <div class="header__profile-logo">
-            Лого
-          </div>
+          <IconProfileButton
+            class="header__profile-logo"
+            :fill="fillProfileButton"
+          />
         </ButtonHeader>
+        <div class="header__interaction">
+          <ButtonHeader
+            title="Добавить в друзья"
+            class="header__interaction-button"
+            @mouseover.native="fillAddToFriends = 'white'"
+            @mouseleave.native="fillAddToFriends = '#11161B'"
+          >
+            <IconAddToFriends :fill="fillAddToFriends" />
+          </ButtonHeader>
+          <ButtonHeader
+            title="Бросить вызов"
+            class="header__interaction-button"
+            @mouseover.native="fillChallenge = 'white'"
+            @mouseleave.native="fillChallenge = '#11161B'"
+          >
+            <IconChallenge :fill="fillChallenge" />
+          </ButtonHeader>
+          <ButtonHeader
+            title="Создать команду"
+            class="header__interaction-button"
+            @mouseover.native="fillCreateTeam = 'white'"
+            @mouseleave.native="fillCreateTeam = '#11161B'"
+          >
+            <IconCreateTeam :fill="fillCreateTeam" />
+          </ButtonHeader>
+        </div>
       </div>
     </div>
   </Header>
@@ -46,8 +79,23 @@ export default Vue.extend({
   components: {
     Header: () => import("@/components/Header/Header.vue"),
     ButtonHeader: () => import("@/ui-components/ButtonHeader.vue"),
+    IconProfileButton: () =>
+      import("@/ui-components/icons/IconProfileButton.vue"),
+    IconAddToFriends: () =>
+      import("@/ui-components/icons/IconAddToFriends.vue"),
+    IconChallenge: () => import("@/ui-components/icons/IconChallenge.vue"),
+    IconCreateTeam: () => import("@/ui-components/icons/IconCreateTeam.vue"),
     HeaderProfileContent: () =>
       import("@/components/Header/HeaderProfileContent.vue")
+  },
+
+  data() {
+    return {
+      fillProfileButton: "#11161B",
+      fillAddToFriends: "#11161B",
+      fillChallenge: "#11161B",
+      fillCreateTeam: "#11161B"
+    };
   },
 
   computed: {
@@ -93,6 +141,21 @@ export default Vue.extend({
     margin: 35px 20px 20px 0;
   }
 
+  &__interaction {
+    display: flex;
+    margin-top: -5px;
+    margin-left: 10px;
+
+    &-button {
+      min-width: 38px;
+      height: 20px;
+
+      & + & {
+        margin-left: 15px;
+      }
+    }
+  }
+
   &__profile {
     margin: 10px 0 20px 20px;
     text-decoration: none;
@@ -105,7 +168,7 @@ export default Vue.extend({
     &-logo {
       display: flex;
       align-items: center;
-      margin: 8px;
+      margin-left: 8px;
     }
 
     &-nickname,

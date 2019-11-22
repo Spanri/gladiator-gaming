@@ -5,14 +5,13 @@
         Арена
       </ButtonHeader>
       <HeaderProfileContent class="header__content" />
-      <button class="header__settings">
+      <button
+        class="header__settings"
+        @mouseover="fill = 'rgb(72, 109, 109)'"
+        @mouseleave="fill = '#83E4E4'"
+      >
         <span class="header__settings-text">Настройки</span>
-        <object
-          class="header__settings-svg"
-          type="image/svg+xml"
-          :data="svgSettings"
-          >нас</object
-        >
+        <IconSettings class="header__settings-svg" :fill="fill" />
       </button>
       <div class="header__right-buttons">
         <ButtonHeader
@@ -43,13 +42,14 @@ export default Vue.extend({
   components: {
     Header: () => import("@/components/Header/Header.vue"),
     ButtonHeader: () => import("@/ui-components/ButtonHeader.vue"),
+    IconSettings: () => import("@/ui-components/icons/IconSettings.vue"),
     HeaderProfileContent: () =>
       import("@/components/Header/HeaderProfileContent.vue")
   },
 
   data() {
     return {
-      svgSettings: require("@/assets/settings.svg")
+      fill: "#83E4E4"
     };
   },
 
@@ -151,12 +151,13 @@ export default Vue.extend({
   }
 
   &__settings {
+    z-index: 2;
     background: none;
     border: 0;
-    color: white;
+    color: $white;
     font: 18px/21px Roboto Mono, Serif;
     margin-top: 80px;
-    margin-right: -100px;
+    margin-right: -95px;
 
     display: flex;
     flex-direction: row;
@@ -172,12 +173,7 @@ export default Vue.extend({
 
     &:hover {
       cursor: pointer;
-      color: $accent;
-
-      & svg path {
-        cursor: pointer;
-        fill: $white !important;
-      }
+      color: $gray;
     }
   }
 }
