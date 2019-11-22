@@ -1,6 +1,6 @@
 <script lang="ts">
 import Vue from "vue";
-import { Doughnut } from "vue-chartjs";
+import { Doughnut } from "vue-chartjs-typescript";
 
 export default Vue.extend({
   extends: Doughnut,
@@ -15,7 +15,7 @@ export default Vue.extend({
     }
   },
   mounted() {
-    this.renderChart(this.chartdata, this.options);
+    (this as any).renderChart(this.chartdata, this.options);
   }
 });
 </script>

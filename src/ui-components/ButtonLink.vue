@@ -65,6 +65,7 @@ export default Vue.extend({
     color: $black;
     display: flex;
     justify-content: center;
+    z-index: 2;
   }
 
   &:before {
@@ -76,7 +77,7 @@ export default Vue.extend({
     bottom: 0;
     left: 0;
 
-    z-index: -1;
+    z-index: 1;
     background: $accent;
     border-radius: 5px;
   }

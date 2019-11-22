@@ -100,7 +100,7 @@ export default Vue.extend({
 
   computed: {
     title() {
-      return this.$route.meta.title;
+      return (this as any).$route.meta.title;
     },
 
     profile() {

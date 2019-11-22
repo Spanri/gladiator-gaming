@@ -118,7 +118,7 @@ export default {
     &-text {
       position: absolute;
       color: $white;
-      font: normal normal bold 36px/42px roboto Mono, Serif;
+      font: normal normal bold 30px/35px roboto Mono, Serif;
       top: 40px;
       left: 25px;
     }

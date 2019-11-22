@@ -113,7 +113,7 @@ export default Vue.extend({
     },
 
     title(): string {
-      return this.$route.meta.title;
+      return (this as any).$route.meta.title;
     },
 
     socNetworks(): object {
@@ -122,13 +122,13 @@ export default Vue.extend({
           { component: "IconFacebook", network: "facebook" },
           { component: "IconYouTube", network: "youtube" },
           { component: "IconVK", network: "vk" }
-        ].filter(el => this.profile.socNetworks[el.network] != "")
+        ].filter(el => (this as any).profile.socNetworks[el.network] != "")
       );
       return [
         { component: "IconFacebook", network: "facebook" },
         { component: "IconYouTube", network: "youtube" },
         { component: "IconVK", network: "vk" }
-      ].filter(el => this.profile.socNetworks[el.network] != "");
+      ].filter(el => (this as any).profile.socNetworks[el.network] != "");
     },
 
     profile(): ComplexObjectProfile {

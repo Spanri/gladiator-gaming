@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Block class="app__block" />
     <main class="app__main">
       <router-view class="app__main-inner" />
     </main>
@@ -13,7 +14,8 @@ export default Vue.extend({
   name: "App",
 
   components: {
-    Footer: () => import("@/components/Footer.vue")
+    Footer: () => import("@/components/Footer.vue"),
+    Block: () => import("@/components/Block.vue")
   }
 });
 </script>
@@ -37,7 +39,12 @@ export default Vue.extend({
 
 @media (min-width: 1000px) {
   .app {
-    &__header,
+    &__block {
+      position: absolute;
+      margin-top: 150px;
+      left: 0;
+    }
+
     &__footer {
       margin: 0 auto;
     }
