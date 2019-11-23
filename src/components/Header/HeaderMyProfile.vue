@@ -135,7 +135,7 @@ export default Vue.extend({
         content: attr(data-title);
         color: transparent;
         transform: skew(170deg);
-        border: 1px solid $accent;
+        border: 1px solid $black;
         border-radius: 5px;
         background-color: $accent;
       }
@@ -155,7 +155,7 @@ export default Vue.extend({
     background: none;
     border: 0;
     color: $white;
-    font: 18px/21px Roboto Mono, Serif;
+    font: 1.125rem/1.3125rem Roboto Mono, Serif; // 18/21
     margin-top: 80px;
     margin-right: -95px;
 

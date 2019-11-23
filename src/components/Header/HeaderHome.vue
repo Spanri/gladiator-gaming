@@ -99,7 +99,7 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
 
-    font: 12px/14px Roboto Mono, Serif;
+    font: 0.8571rem/1rem Roboto Mono, Serif; // 12/14
 
     &-img {
       min-width: 64px;

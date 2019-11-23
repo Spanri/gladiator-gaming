@@ -149,6 +149,7 @@ export default Vue.extend({
     &-button {
       min-width: 38px;
       height: 20px;
+      z-index: 1;
 
       & + & {
         margin-left: 15px;
@@ -184,7 +185,7 @@ export default Vue.extend({
       &[data-title]:before {
         content: attr(data-title);
         opacity: 0;
-        z-index: 99999;
+        z-index: 5;
         visibility: hidden;
         max-width: 200px;
         padding: 5px 10px;
@@ -199,14 +200,16 @@ export default Vue.extend({
       &[data-title]:after {
         // background: $black;
         color: $black;
+        z-index: 6;
       }
 
       &[data-title]:before {
         color: transparent;
         transform: skew(170deg);
-        border: 1px solid $accent;
+        border: 1px solid $black;
         border-radius: 5px;
         background-color: $accent;
+        z-index: 6;
       }
 
       &[data-title] {

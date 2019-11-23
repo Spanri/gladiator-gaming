@@ -16,7 +16,8 @@
               : profile.nickname
           }}
         </p>
-        <p v-if="!myProfile" class="content__status">
+        <InputChangeText />
+        <!-- <p v-if="!myProfile" class="content__status">
           {{
             profile.status.length > 35
               ? profile.status.substring(0, 35) + "..."
@@ -44,27 +45,34 @@
           }}
         </p>
         <input
-          maxlength="27"
+          maxlength="25"
           v-show="statusChange"
           ref="inputStatus"
           autofocus
           @focusout="hideChangeStatus"
           class="content__status-input"
           type="text"
+          title="Максимум 25 символов."
           v-model="status"
           @keyup.enter="changeStatus"
-        />
+        /> -->
         <div
           class="content__soc-networks"
           :class="statusChange ? 'statusChange' : ''"
         >
-          <router-link
+          <a
             v-for="(item, index) in socNetworks"
             :key="index"
-            :to="profile.socNetworks[item.network]"
+            :href="profile.socNetworks[item.network]"
+            target="_blank"
           >
-            <component :is="item.component" :fill="fill[index]" />
-          </router-link>
+            <component
+              :is="item.component"
+              :fill="fill[index]"
+              @mouseover="fill[index] = item.fill"
+              @mouseleave="fill[index] = '#83E4E4'"
+            />
+          </a>
         </div>
         <!-- @mouseover="fill[index] = 'white'" @mouseleave="fill[index] = '#83E4E4'" -->
       </div>
@@ -100,11 +108,18 @@ export default Vue.extend({
   },
 
   components: {
+    InputChangeText: () => import("@/ui-components/InputChangeText.vue"),
     IconFacebook: () =>
       import("@/ui-components/icons/socNetworks/IconFacebook.vue"),
     IconYouTube: () =>
       import("@/ui-components/icons/socNetworks/IconYouTube.vue"),
-    IconVK: () => import("@/ui-components/icons/socNetworks/IconVK.vue")
+    IconVK: () => import("@/ui-components/icons/socNetworks/IconVK.vue"),
+    IconTwitch: () =>
+      import("@/ui-components/icons/socNetworks/IconTwitch.vue"),
+    IconTwitter: () =>
+      import("@/ui-components/icons/socNetworks/IconTwitter.vue"),
+    IconInstagram: () =>
+      import("@/ui-components/icons/socNetworks/IconInstagram.vue")
   },
 
   computed: {
@@ -117,17 +132,13 @@ export default Vue.extend({
     },
 
     socNetworks(): object {
-      console.log(
-        [
-          { component: "IconFacebook", network: "facebook" },
-          { component: "IconYouTube", network: "youtube" },
-          { component: "IconVK", network: "vk" }
-        ].filter(el => (this as any).profile.socNetworks[el.network] != "")
-      );
       return [
-        { component: "IconFacebook", network: "facebook" },
-        { component: "IconYouTube", network: "youtube" },
-        { component: "IconVK", network: "vk" }
+        { component: "IconFacebook", network: "facebook", fill: "white" },
+        { component: "IconYouTube", network: "youtube", fill: "red" },
+        { component: "IconVK", network: "vk", fill: "blue" },
+        { component: "IconTwitch", network: "twitch", fill: "green" },
+        { component: "IconTwitter", network: "twitter", fill: "gray" },
+        { component: "IconInstagram", network: "instagram", fill: "yellow" }
       ].filter(el => (this as any).profile.socNetworks[el.network] != "");
     },
 
@@ -139,7 +150,10 @@ export default Vue.extend({
         socNetworks: {
           facebook: "",
           youtube: "",
-          vk: "ссылка"
+          vk: "https://vk.com/animeshny_kot",
+          twitter: "",
+          twitch: "",
+          instagram: "https://www.instagram.com/spanri"
         },
         csgo: {
           rating: 1234
@@ -199,7 +213,7 @@ export default Vue.extend({
 
 .content {
   margin: 50px 30px 15px 30px;
-  font: 12px/14px Roboto Mono, Serif;
+  font: 0.8571rem/1rem Roboto Mono, Serif; // 12/14
 
   display: flex;
   flex-direction: row;
@@ -209,25 +223,29 @@ export default Vue.extend({
     flex-direction: row;
   }
 
-  &__status-change {
-    &:hover {
-      background: $accent-darker;
-      padding: 5px;
-      margin-left: -5px;
-      margin-top: 6px;
-      margin-bottom: -5px;
-    }
-  }
+  // &__status-change {
+  //   border: 1px solid transparent;
 
-  &__status-input {
-    background: transparent;
-    border: 1px solid $accent;
-    color: $white;
-    padding: 2px 5px;
-    width: 90%;
-    margin-top: 7px !important;
-    margin-left: -5px !important;
-  }
+  //   &:hover {
+  //     background: $accent-darker;
+  //     padding: 5px;
+  //     margin-left: -5px;
+  //     margin-top: 6px;
+  //     margin-bottom: -5px;
+  //   }
+  // }
+
+  // &__status-input {
+  //   background: transparent;
+  //   border: 1px solid $accent;
+  //   color: $white;
+  //   font: 0.8571rem/1rem Roboto Mono, Serif;
+  //   padding: 5px;
+  //   width: 98%;
+  //   margin-left: -5px !important;
+  //   margin-top: 6px !important;
+  //   margin-bottom: -1px !important;
+  // }
 
   &__soc-networks {
     * + * {
@@ -244,13 +262,13 @@ export default Vue.extend({
   &__rating {
     &-title {
       color: $white;
-      font: 16px/19px Roboto Mono, Serif;
+      font: 1rem/1.1875rem Roboto Mono, Serif; // 16/19
       text-align: right;
     }
 
     &-value {
       color: $accent;
-      font: normal normal bold 24px/28px Roboto Mono, Serif;
+      font: normal normal bold 1.5rem/1.75rem Roboto Mono, Serif; // 24/28
       text-align: right;
     }
 
@@ -273,7 +291,7 @@ export default Vue.extend({
 
   &__general {
     color: $white;
-    min-width: 200px;
+    min-width: 210px;
     padding: 0px 10px 5px 20px;
 
     & > * {

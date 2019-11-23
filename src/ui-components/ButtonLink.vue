@@ -61,7 +61,7 @@ export default Vue.extend({
   }
 
   & > * {
-    font: normal normal bold 16px/19px Roboto Mono, Serif;
+    font: normal normal bold 1rem/1.1875rem Roboto Mono, Serif; // 16/19
     color: $black;
     display: flex;
     justify-content: center;

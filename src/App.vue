@@ -41,7 +41,7 @@ export default Vue.extend({
   .app {
     &__block {
       position: absolute;
-      margin-top: 150px;
+      margin-top: 250px;
       left: 0;
     }
 

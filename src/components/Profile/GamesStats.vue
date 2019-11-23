@@ -102,12 +102,12 @@ export default {
 
   &__title {
     color: $white;
-    font: 14px/16px Roboto Mono, Serif;
+    font: 1rem/1.1429rem Roboto Mono, Serif; // 14/16
   }
 
   &__value {
     color: $blue;
-    font: normal normal bold 14px/16px Roboto Mono, Serif;
+    font: normal normal bold 1rem/1.1429rem Roboto Mono, Serif; // 14/16
   }
 
   &__chart {
@@ -118,7 +118,7 @@ export default {
     &-text {
       position: absolute;
       color: $white;
-      font: normal normal bold 30px/35px roboto Mono, Serif;
+      font: normal normal bold 1.875rem/2.1875rem roboto Mono, Serif; // 30/35
       top: 40px;
       left: 25px;
     }

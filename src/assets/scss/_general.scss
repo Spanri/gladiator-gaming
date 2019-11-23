@@ -2,6 +2,19 @@ html {
   height: 0;
   display: flex; // для IE
   flex-direction: row;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 12px;
+  }
 }
 
 body {
