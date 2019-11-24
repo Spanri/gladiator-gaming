@@ -26,3 +26,8 @@ body {
 a {
   text-decoration: none;
 }
+
+::selection {
+  background: $pre-accent;
+  color: $black;
+}

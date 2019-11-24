@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <Block class="app__block" />
     <main class="app__main">
+      <Block class="app__block" />
       <router-view class="app__main-inner" />
+      <Friends class="app__friends" />
     </main>
     <Footer class="app__footer" />
   </div>
@@ -10,12 +11,14 @@
 
 <script lang="ts">
 import Vue from "vue";
+
 export default Vue.extend({
   name: "App",
 
   components: {
     Footer: () => import("@/components/Footer.vue"),
-    Block: () => import("@/components/Block.vue")
+    Block: () => import("@/components/Block.vue"),
+    Friends: () => import("@/components/Friends.vue")
   }
 });
 </script>
@@ -45,12 +48,21 @@ export default Vue.extend({
       left: 0;
     }
 
+    &__friends {
+      position: absolute;
+      margin-top: 250px;
+      right: 0;
+    }
+
     &__footer {
       margin: 0 auto;
     }
 
     &__main {
       margin: 0 auto auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }

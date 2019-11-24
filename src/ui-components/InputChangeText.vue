@@ -119,15 +119,20 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .input-change {
+  margin: 0;
+  padding: 5px 0;
+  position: relative;
+
   &__text-change {
     border: 1px solid transparent;
+    margin: 0;
+    padding: 5px 0;
+    position: relative;
 
     &:hover {
-      background: $accent-darker;
       padding: 5px;
+      background: $accent-darker;
       margin-left: -5px;
-      margin-top: 6px;
-      margin-bottom: -5px;
     }
   }
 
@@ -135,12 +140,10 @@ export default Vue.extend({
     background: transparent;
     border: 1px solid $accent;
     color: $white;
-    font: 0.8571rem/1rem Roboto Mono, Serif;
+    font: 0.8571rem/1rem Roboto Mono, Serif; // 14/16
     padding: 5px;
     width: 98%;
     margin-left: -5px !important;
-    margin-top: 6px !important;
-    margin-bottom: -1px !important;
   }
 }
 </style>

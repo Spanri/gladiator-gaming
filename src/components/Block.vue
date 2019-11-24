@@ -1,8 +1,21 @@
 <template>
-  <div class="block">dfgdfg</div>
-  <!-- <object type="image/svg+xml" data="@/assets/photo.jpg" class="block">
-    dfdff :data="data"
-  </object> -->
+  <div class="block">
+    <span
+      >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque vel
+      voluptatibus quis maxime, cupiditate porro quam nobis deserunt saepe
+      labore culpa recusandae molestiae quaerat expedita, optio quo fugit
+      mollitia quas. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Natus dolorem, corporis adipisci quisquam itaque veniam sed nostrum, illum
+      minima quo explicabo nulla temporibus, quis maxime aliquid. Repellat
+      voluptas sit quam! Lorem ipsum dolor sit amet consectetur adipisicing
+      elit. Esse, quae pariatur? Suscipit omnis alias reprehenderit incidunt
+      minus sed veniam, eum deleniti soluta molestias, assumenda iusto error
+      sequi, a sunt vitae.
+    </span>
+    <!-- <object type="image/svg+xml" data="@/assets/photo.jpg">
+      dfdff :data="data"
+    </object> -->
+  </div>
 </template>
 
 <script lang="ts">
@@ -17,13 +30,13 @@ export default Vue.extend({
   }
 });
 </script>
+
 <style lang="scss" scoped>
 .block {
   height: 550px;
   width: 250px;
   background: $black;
   color: $white;
-  position: absolute;
 
   &:before,
   &:after {
@@ -45,6 +58,10 @@ export default Vue.extend({
     bottom: -50px;
     transform: skewY(-15deg);
     border-bottom-right-radius: 20px;
+  }
+
+  & > * {
+    position: relative;
   }
 }
 </style>

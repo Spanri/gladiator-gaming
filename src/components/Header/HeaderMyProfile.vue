@@ -61,7 +61,8 @@ export default Vue.extend({
     profile() {
       return {
         nickname: "Nagibator_123",
-        status: "Роза упала на лапу Азора"
+        status: "Роза упала на лапу Азора",
+        balance: 922
       };
     },
 
@@ -76,8 +77,7 @@ export default Vue.extend({
        * если слишком больше число, оно
        * неправильно обрабатывает
        */
-      let num = 922;
-      return num.toLocaleString();
+      return (this as any).profile.balance.toLocaleString();
     }
   }
 });
@@ -94,6 +94,10 @@ export default Vue.extend({
 
   &__title {
     margin: 35px 20px 20px 0;
+  }
+
+  &__content {
+    margin: 30px 30px 25px 30px;
   }
 
   &__profile {

@@ -1,42 +1,27 @@
 <template>
-  <router-link :to="to" class="button-link" :class="`button-link__${side}`">
+  <button class="button-common" :class="`button-common__${side}`">
     <span>
       <slot />
     </span>
-  </router-link>
+  </button>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 export default Vue.extend({
-  name: "ButtonLink",
+  name: "ButtonCommon",
 
   props: {
     side: {
       type: String,
       default: "right"
-    },
-
-    to: {
-      type: String,
-      default: "/"
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.router-link-active {
-  color: $white;
-
-  &.button-link:before {
-    background: $pre-accent;
-    background: linear-gradient(90deg, $accent 0%, $pre-accent 100%);
-    box-shadow: 0 0 25px $pre-accent;
-  }
-}
-
-.button-link {
+.button-common {
   border: 0;
   background: none;
   padding: 10px 15px;
@@ -49,13 +34,13 @@ export default Vue.extend({
   display: inline-block;
 
   &__left {
-    &.button-link:before {
+    &.button-common:before {
       transform: skew(-170deg);
     }
   }
 
   &__right {
-    &.button-link:before {
+    &.button-common:before {
       transform: skew(170deg);
     }
   }

@@ -1,5 +1,8 @@
 <template>
   <div class="content">
+    <div class="spinner" v-cloak style="color:white">
+      SPINNER
+    </div>
     <section class="content__info">
       <img
         v-if="profile.photo"
@@ -16,50 +19,8 @@
               : profile.nickname
           }}
         </p>
-        <InputChangeText />
-        <!-- <p v-if="!myProfile" class="content__status">
-          {{
-            profile.status.length > 35
-              ? profile.status.substring(0, 35) + "..."
-              : profile.status
-          }}
-        </p>
-        <p
-          v-if="myProfile && profile.status == ''"
-          v-show="!statusChange"
-          @click="showChangeStatus"
-          class="content__status content__status-change"
-        >
-          добавить статус
-        </p>
-        <p
-          v-if="myProfile && profile.status != ''"
-          v-show="!statusChange"
-          @click="showChangeStatus"
-          class="content__status content__status-change"
-        >
-          {{
-            profile.status.length > 35
-              ? profile.status.substring(0, 35) + "..."
-              : profile.status
-          }}
-        </p>
-        <input
-          maxlength="25"
-          v-show="statusChange"
-          ref="inputStatus"
-          autofocus
-          @focusout="hideChangeStatus"
-          class="content__status-input"
-          type="text"
-          title="Максимум 25 символов."
-          v-model="status"
-          @keyup.enter="changeStatus"
-        /> -->
-        <div
-          class="content__soc-networks"
-          :class="statusChange ? 'statusChange' : ''"
-        >
+        <InputChangeText class="content__status" />
+        <div class="content__soc-networks">
           <a
             v-for="(item, index) in socNetworks"
             :key="index"
@@ -80,7 +41,7 @@
     <section class="content__rating">
       <p class="content__rating-title">Рейтинг:</p>
       <p class="content__rating-value">
-        {{ profile.csgo.rating.toLocaleString() }}
+        {{ profile.csgo.rating.toLocaleString("en-IN") }}
       </p>
     </section>
   </div>
@@ -102,8 +63,8 @@ export default Vue.extend({
 
   data() {
     return {
-      statusChange: false,
-      fill: new Array(3).fill("#83E4E4")
+      fill: new Array(3).fill("#83E4E4"),
+      loading: true
     };
   },
 
@@ -161,16 +122,6 @@ export default Vue.extend({
       };
     },
 
-    status: {
-      get(): string {
-        return this.profile.status;
-      },
-
-      set(val: string): string {
-        return val;
-      }
-    },
-
     nickname(): string {
       let nickname =
         "Nagibator_134_million_alyh_roz_million_alyh_roz_million_alyh_roz";
@@ -187,32 +138,22 @@ export default Vue.extend({
     }
   },
 
-  methods: {
-    changeStatus() {
-      console.log(this.status);
-      this.statusChange = false;
-    },
-
-    showChangeStatus() {
-      this.statusChange = true;
-      const ref = this.$refs.inputStatus as HTMLInputElement;
-      this.$nextTick(() => ref.focus());
-    },
-
-    hideChangeStatus() {
-      this.statusChange = false;
-    }
+  beforeMount() {
+    this.loading = false;
   }
 });
 </script>
 
 <style scoped lang="scss">
-.statusChange {
-  margin-top: 7px !important;
+.spinner {
+  display: none;
+}
+
+[v-cloak].spinner {
+  display: block;
 }
 
 .content {
-  margin: 50px 30px 15px 30px;
   font: 0.8571rem/1rem Roboto Mono, Serif; // 12/14
 
   display: flex;
@@ -222,30 +163,6 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
   }
-
-  // &__status-change {
-  //   border: 1px solid transparent;
-
-  //   &:hover {
-  //     background: $accent-darker;
-  //     padding: 5px;
-  //     margin-left: -5px;
-  //     margin-top: 6px;
-  //     margin-bottom: -5px;
-  //   }
-  // }
-
-  // &__status-input {
-  //   background: transparent;
-  //   border: 1px solid $accent;
-  //   color: $white;
-  //   font: 0.8571rem/1rem Roboto Mono, Serif;
-  //   padding: 5px;
-  //   width: 98%;
-  //   margin-left: -5px !important;
-  //   margin-top: 6px !important;
-  //   margin-bottom: -1px !important;
-  // }
 
   &__soc-networks {
     * + * {
@@ -296,10 +213,6 @@ export default Vue.extend({
 
     & > * {
       margin: 0;
-    }
-
-    & > * + * {
-      margin-top: 11px;
     }
   }
 }
