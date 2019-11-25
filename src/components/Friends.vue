@@ -1,6 +1,21 @@
 <template>
   <div class="friends">
-    <ButtonCommon><span>Создать команду</span></ButtonCommon>
+    <ButtonCommon>
+      <span class="friends__text">Создать команду</span>
+      <IconAddToFriends />
+    </ButtonCommon>
+    <div class="friends__search">
+      <input>
+    </div>
+    <ButtonCommon>
+      <span class="friends__text">Заявки</span>
+      <IconCreateTeam />
+    </ButtonCommon>
+    <ButtonCommon>
+      <span class="friends__text">Вызовы</span>
+      <span>{{ zayvki }}</span>
+      <IconChallenge />
+    </ButtonCommon>
   </div>
 </template>
 
@@ -10,8 +25,18 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Friends",
 
+  data() {
+    return {
+      zayvki: 3
+    }
+  },
+
   components: {
-    ButtonCommon: () => import("@/ui-components/ButtonCommon.vue")
+    ButtonCommon: () => import("@/ui-components/ButtonCommon.vue"),
+    IconAddToFriends: () =>
+      import("@/ui-components/icons/IconAddToFriends.vue"),
+    IconChallenge: () => import("@/ui-components/icons/IconChallenge.vue"),
+    IconCreateTeam: () => import("@/ui-components/icons/IconCreateTeam.vue"),
   }
 });
 </script>
@@ -22,6 +47,10 @@ export default Vue.extend({
   width: 250px;
   background: $black;
   color: $white;
+
+  &__text {
+    font: normal normal bold 9px/11px Roboto Mono, Serif;
+  }
 
   &:before,
   &:after {

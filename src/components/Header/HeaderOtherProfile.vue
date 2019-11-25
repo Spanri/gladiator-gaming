@@ -128,10 +128,9 @@ export default Vue.extend({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .header {
-  //@include buttonHeader;
+  // @include buttonHeader;
 
   display: flex;
   justify-content: space-between;
@@ -146,7 +145,7 @@ export default Vue.extend({
   }
 
   &__right-buttons {
-    margin-top: 5px;
+    margin-top: 8px;
   }
 
   &__interaction {

@@ -26,13 +26,10 @@
             :key="index"
             :href="profile.socNetworks[item.network]"
             target="_blank"
+            @mouseover="over(index)"
+            @mouseleave="leave(index)"
           >
-            <component
-              :is="item.component"
-              :fill="fill[index]"
-              @mouseover="fill[index] = item.fill"
-              @mouseleave="fill[index] = '#83E4E4'"
-            />
+            <component :is="item.component" :fill="fill[index]" />
           </a>
         </div>
         <!-- @mouseover="fill[index] = 'white'" @mouseleave="fill[index] = '#83E4E4'" -->
@@ -80,7 +77,10 @@ export default Vue.extend({
     IconTwitter: () =>
       import("@/ui-components/icons/socNetworks/IconTwitter.vue"),
     IconInstagram: () =>
-      import("@/ui-components/icons/socNetworks/IconInstagram.vue")
+      import("@/ui-components/icons/socNetworks/IconInstagram.vue"),
+    IconSteam: () => import("@/ui-components/icons/socNetworks/IconSteam.vue"),
+    IconDiscord: () =>
+      import("@/ui-components/icons/socNetworks/IconDiscord.vue")
   },
 
   computed: {
@@ -94,12 +94,13 @@ export default Vue.extend({
 
     socNetworks(): object {
       return [
-        { component: "IconFacebook", network: "facebook", fill: "white" },
-        { component: "IconYouTube", network: "youtube", fill: "red" },
-        { component: "IconVK", network: "vk", fill: "blue" },
-        { component: "IconTwitch", network: "twitch", fill: "green" },
-        { component: "IconTwitter", network: "twitter", fill: "gray" },
-        { component: "IconInstagram", network: "instagram", fill: "yellow" }
+        { component: "IconFacebook", network: "facebook", fill: "#1F78B4" },
+        { component: "IconYouTube", network: "youtube", fill: "#EB5757" },
+        { component: "IconVK", network: "vk", fill: "#2D9CDB" },
+        { component: "IconTwitch", network: "twitch", fill: "#C548FF" },
+        { component: "IconTwitter", network: "twitter", fill: "#56CCF2" },
+        { component: "IconSteam", network: "steam", fill: "#FF598B" },
+        { component: "IconDiscord", network: "discord", fill: "#0F598B" }
       ].filter(el => (this as any).profile.socNetworks[el.network] != "");
     },
 
@@ -109,12 +110,14 @@ export default Vue.extend({
         photo: "Фото",
         status: "Роза упала на лапу Азора",
         socNetworks: {
-          facebook: "",
-          youtube: "",
+          facebook: "w",
+          youtube: "w",
           vk: "https://vk.com/animeshny_kot",
-          twitter: "",
-          twitch: "",
-          instagram: "https://www.instagram.com/spanri"
+          twitter: "w",
+          twitch: "w",
+          instagram: "https://www.instagram.com/spanri",
+          steam: "w",
+          discord: "w"
         },
         csgo: {
           rating: 1234
@@ -135,6 +138,16 @@ export default Vue.extend({
        */
       let num = 923456734534534534543346452245;
       return num.toLocaleString();
+    }
+  },
+
+  methods: {
+    over(index: number) {
+      Vue.set(this.fill, index, (this as any).socNetworks[index].fill);
+    },
+
+    leave(index: number) {
+      Vue.set(this.fill, index, "#83E4E4");
     }
   },
 
