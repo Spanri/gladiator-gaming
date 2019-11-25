@@ -177,6 +177,8 @@ export default Vue.extend({
   }
 
   &__rating {
+    margin-top: -3px;
+
     &-title {
       color: $white;
       font: 1rem/1.1875rem Roboto Mono, Serif; // 16/19

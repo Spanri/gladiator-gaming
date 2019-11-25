@@ -5,14 +5,6 @@
         Арена
       </ButtonHeader>
       <HeaderProfileContent class="header__content" />
-      <button
-        class="header__settings"
-        @mouseover="fill = 'rgb(72, 109, 109)'"
-        @mouseleave="fill = '#83E4E4'"
-      >
-        <span class="header__settings-text">Настройки</span>
-        <IconSettings class="header__settings-svg" :fill="fill" />
-      </button>
       <div class="header__right-buttons">
         <ButtonHeader
           to="/profile"
@@ -28,6 +20,14 @@
             ₽
           </span>
         </ButtonHeader>
+        <button
+          class="header__settings"
+          @mouseover="fill = 'rgb(72, 109, 109)'"
+          @mouseleave="fill = '#83E4E4'"
+        >
+          <IconSettings class="header__settings-svg" :fill="fill" />
+          <span class="header__settings-text">Настройки</span>
+        </button>
       </div>
     </div>
   </Header>
@@ -97,11 +97,15 @@ export default Vue.extend({
   }
 
   &__content {
-    margin: 30px 30px 25px 30px;
+    margin: 35px 30px 25px 30px;
+  }
+
+  &__right-buttons {
+    z-index: 2;
   }
 
   &__profile {
-    margin: 35px 0 20px 20px;
+    margin: 35px 0 11px 20px;
     text-decoration: none;
 
     &-balance {
@@ -155,24 +159,24 @@ export default Vue.extend({
   }
 
   &__settings {
-    z-index: 2;
     background: none;
     border: 0;
     color: $white;
-    font: 1.125rem/1.3125rem Roboto Mono, Serif; // 18/21
-    margin-top: 80px;
-    margin-right: -95px;
+    font: 0.75rem/0.875rem Roboto Mono, Serif; // 12/14
+    margin-top: 0px;
+    margin-left: 17px;
+    padding: 0;
 
     display: flex;
     flex-direction: row;
 
     &-text {
-      margin-right: 15px;
       margin-top: 5px;
     }
 
     &-svg {
-      width: 30px;
+      margin-right: 12px;
+      width: 16px;
     }
 
     &:hover {

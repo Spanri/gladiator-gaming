@@ -142,7 +142,11 @@ export default Vue.extend({
   }
 
   &__content {
-    margin: 30px 30px 25px 30px;
+    margin: 35px 30px 25px 30px;
+  }
+
+  &__right-buttons {
+    margin-top: 5px;
   }
 
   &__interaction {
