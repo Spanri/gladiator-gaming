@@ -1,10 +1,14 @@
 <template>
   <div id="app">
     <main class="app__main">
-      <Block class="app__block" />
       <router-view class="app__main-inner" />
-      <Friends class="app__friends" />
     </main>
+    <div class="app__block-wrapper">
+      <Block class="app__block" />
+    </div>
+    <div class="app__friends-wrapper">
+      <Friends class="app__friends" />
+    </div>
     <Footer class="app__footer" />
   </div>
 </template>
@@ -40,30 +44,38 @@ export default Vue.extend({
   align-items: flex-start;
 }
 
-@media (min-width: 1000px) {
-  .app {
-    &__block {
-      position: absolute;
-      margin-top: 250px;
-      left: 0;
-    }
+// @media (min-width: 1000px) {
+.app {
+  &__block {
+    position: fixed;
+    top: calc((100% - 600px) / 2);
+    left: 0;
 
-    &__friends {
-      position: absolute;
-      margin-top: 250px;
-      right: 0;
-    }
-
-    &__footer {
-      margin: 0 auto;
-    }
-
-    &__main {
-      margin: 0 auto auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    &-wrapper {
+      position: relative;
     }
   }
+
+  &__friends {
+    position: fixed;
+    top: calc((100% - 600px) / 2);
+    right: 0;
+
+    &-wrapper {
+      position: relative;
+    }
+  }
+
+  &__footer {
+    margin: 0 auto;
+  }
+
+  &__main {
+    margin: 0 auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
+// }
 </style>

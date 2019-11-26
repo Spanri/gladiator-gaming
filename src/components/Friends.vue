@@ -31,7 +31,7 @@ export default Vue.extend({
   data() {
     return {
       requests: 3,
-      search: "dfdf"
+      search: ""
     };
   },
 
@@ -147,6 +147,24 @@ export default Vue.extend({
 
   & > * {
     position: relative;
+  }
+}
+
+@media (max-width: 1500px) {
+  .friends {
+    height: calc(100% + 10px);
+
+    &:before,
+    &:after {
+      height: 0;
+    }
+  }
+}
+
+@media (max-height: 600px) {
+  .friends {
+    padding-top: 200px;
+    margin-left: -200px;
   }
 }
 </style>
