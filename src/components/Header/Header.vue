@@ -21,7 +21,6 @@ export default Vue.extend({
     // isAith() {
     //   return true;
     // },
-
     // headerComponent() {
     //   /**
     //    * цифры по счету обозначают:

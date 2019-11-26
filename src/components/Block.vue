@@ -1,20 +1,28 @@
 <template>
   <div class="block">
-    <span
-      >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque vel
-      voluptatibus quis maxime, cupiditate porro quam nobis deserunt saepe
-      labore culpa recusandae molestiae quaerat expedita, optio quo fugit
-      mollitia quas. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Natus dolorem, corporis adipisci quisquam itaque veniam sed nostrum, illum
-      minima quo explicabo nulla temporibus, quis maxime aliquid. Repellat
-      voluptas sit quam! Lorem ipsum dolor sit amet consectetur adipisicing
-      elit. Esse, quae pariatur? Suscipit omnis alias reprehenderit incidunt
-      minus sed veniam, eum deleniti soluta molestias, assumenda iusto error
-      sequi, a sunt vitae.
-    </span>
-    <!-- <object type="image/svg+xml" data="@/assets/photo.jpg">
-      dfdff :data="data"
-    </object> -->
+    <iframe
+      class="block__content"
+      frameborder="0"
+      scrolling="no"
+      src="https://www.deepl.com/ru/translator#ru/en/"
+      marginwidth="0"
+      marginheight="0"
+      width="1024"
+      height="1000"
+    >
+      <p>Этот блок не поддерживается вашим браузером.</p>
+    </iframe>
+    <!-- <vue-friendly-iframe
+      class="block__content"
+      src="https://www.deepl.com/ru/translator#ru/en/"
+      @load="onLoad"
+      @document-load="onDocumentLoad"
+      @click="window.open('https://www.somewebsite.com', '_blank')"
+      marginwidth="0"
+      marginheight="0"
+      frameborder="0"
+      scrolling="no"
+    /> -->
   </div>
 </template>
 
@@ -25,7 +33,7 @@ export default Vue.extend({
 
   computed: {
     data(): string {
-      return "@/assets/photo.jpg";
+      return require("@/assets/game.jpg");
     }
   }
 });
@@ -38,6 +46,18 @@ export default Vue.extend({
   background: $black;
   color: $white;
 
+  &__content {
+    // min-height: calc(100% + 150px);
+    height: calc(100% + 170px);
+    width: 100%;
+    z-index: 1;
+
+    margin-top: -83px;
+    // overflow: hidden;
+
+    clip-path: polygon(0 0, 100% 10%, 100% 90%, 0% 100%);
+  }
+
   &:before,
   &:after {
     content: "";
@@ -46,6 +66,7 @@ export default Vue.extend({
     left: 0;
     height: 90px;
     background: $black;
+    z-index: 0;
   }
 
   &:before {

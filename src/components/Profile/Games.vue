@@ -1,6 +1,9 @@
 <template>
   <div class="games">
     <GamesStats :stats="stats" class="games__stats" />
+    <div class="pie">
+      <div class="pie-inner"></div>
+    </div>
   </div>
 </template>
 
@@ -36,6 +39,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.pie {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: red;
+
+  background-image: linear-gradient(to right, transparent 50%, #655 0);
+}
+
 .games {
   &__stats {
   }
