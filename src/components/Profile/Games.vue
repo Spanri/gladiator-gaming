@@ -1,6 +1,7 @@
 <template>
   <div class="games">
-    <GamesStats :stats="stats" class="games__stats" />
+    <GamesStats class="games__stats" :stats="stats" />
+    <GamesHistory class="games__history" />
   </div>
 </template>
 
@@ -9,7 +10,8 @@ export default {
   name: "Games",
 
   components: {
-    GamesStats: () => import("@/components/Profile/GamesStats.vue")
+    GamesStats: () => import("@/components/Profile/GamesStats.vue"),
+    GamesHistory: () => import("@/components/Profile/GamesHistory.vue")
   },
 
   data() {
@@ -28,7 +30,7 @@ export default {
           { title: "Выигранные раунды", value: 3513 },
           { title: "MVP", value: 849 }
         ],
-        percent: 100
+        percent: 64
       };
     }
   }

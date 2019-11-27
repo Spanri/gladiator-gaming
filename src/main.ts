@@ -2,9 +2,9 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import VueFriendlyIframe from 'vue-friendly-iframe';
+import VueFriendlyIframe from "vue-friendly-iframe";
 
-Vue.component('vue-friendly-iframe', VueFriendlyIframe);
+Vue.component("vue-friendly-iframe", VueFriendlyIframe);
 
 Vue.config.productionTip = false;
 

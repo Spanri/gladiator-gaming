@@ -86,7 +86,7 @@ export default Vue.extend({
   }
 
   &__circle {
-    stroke-dashoffset: 200;
+    stroke-dashoffset: 100;
     stroke-linecap: round;
     stroke-width: 11;
     fill: none;

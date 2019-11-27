@@ -8,7 +8,9 @@
         </span>
       </div>
     </div>
-    <Doughnut class="stats__chart" :data="stats.percent" />
+    <div class="stats__chart-wrapper">
+      <Doughnut class="stats__chart" :data="stats.percent" />
+    </div>
     <div class="stats__item-wrapper">
       <div v-for="index in [4, 5, 6]" :key="index" class="stats__item">
         <span class="stats__title">{{ stats.items[index].title }}</span>
@@ -40,7 +42,7 @@ export default {
 .stats {
   border: 1px solid $accent;
   border-radius: 15px;
-  padding: 15px 45px;
+  padding: 15px 45px 30px;
 
   display: flex;
   justify-content: space-between;
@@ -69,14 +71,10 @@ export default {
   &__chart {
     height: 100%;
     position: relative;
-    margin: auto 0;
+    margin-top: 15px;
 
-    &-text {
-      position: absolute;
-      color: $white;
-      font: normal normal bold 1.875rem/2.1875rem roboto Mono, Serif; // 30/35
-      top: 40px;
-      left: 25px;
+    &-wrapper {
+      margin: auto 0;
     }
   }
 }
