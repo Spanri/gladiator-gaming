@@ -22,7 +22,7 @@ export default Vue.extend({
   components: {
     Footer: () => import("@/components/Footer.vue"),
     Block: () => import("@/components/Block.vue"),
-    Friends: () => import("@/components/Friends.vue")
+    Friends: () => import("@/components/Friends/Friends.vue")
   }
 });
 </script>

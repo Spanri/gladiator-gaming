@@ -43,6 +43,8 @@
     "sass-loader": "^8.0.0",
     "typescript": "~3.5.3",
     "vue-friendly-iframe": "^0.16.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-perfect-scrollbar": "^0.2.1",
+    "vue-template-compiler": "^2.6.10",
+    "vuebar": "0.0.20"
   }
 }

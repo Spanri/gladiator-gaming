@@ -1,15 +1,13 @@
 <template>
   <div class="friends">
-    <div class="friends__create-team-wrapper">
-      <ButtonCommon class="friends__create-team friends__button">
-        <span class="friends__text">Создать команду</span>
-        <IconCreateTeam width="40" />
-      </ButtonCommon>
-    </div>
     <div class="friends__search">
       <Search class="friends__search-svg" />
       <input class="friends__input" v-model="search" />
     </div>
+    <ButtonCommon class="friends__create-team friends__button">
+      <span class="friends__text">Создать команду</span>
+      <IconCreateTeam width="40" />
+    </ButtonCommon>
     <ButtonCommon class="friends__requests friends__button">
       <span class="friends__text">Заявки</span>
       <span class="friends__requests-number">{{ requests }}</span>
@@ -19,6 +17,7 @@
       <span class="friends__text">Вызовы</span>
       <IconChallenge />
     </ButtonCommon>
+    <FriendsList class="friends__list" />
   </div>
 </template>
 
@@ -36,6 +35,7 @@ export default Vue.extend({
   },
 
   components: {
+    FriendsList: () => import("@/components/Friends/FriendsList.vue"),
     ButtonCommon: () => import("@/ui-components/ButtonCommon.vue"),
     Search: () => import("@/ui-components/Search.vue"),
     IconAddToFriends: () =>
@@ -55,17 +55,25 @@ export default Vue.extend({
 
 .friends {
   height: 550px;
-  width: 210px;
+  width: 117px;
   background: $black;
   color: $white;
   padding: 20px;
 
+  display: flex;
+  flex-direction: column;
+
   &__button {
     min-width: 100px !important;
     padding: 5px 10px !important;
+    margin: 0 auto;
 
     & > * {
       justify-content: space-between;
+    }
+
+    & + & {
+      margin-top: 15px;
     }
   }
 
@@ -98,14 +106,6 @@ export default Vue.extend({
     display: inline-block;
   }
 
-  &__create-team {
-    &-wrapper {
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-    }
-  }
-
   &__search {
     &-svg {
       display: inline-block;
@@ -114,13 +114,13 @@ export default Vue.extend({
   }
 
   &__challenge {
-    display: relative;
-    top: 16px;
-    margin-left: 7px;
-
     & .friends__text {
       margin-right: 7px;
     }
+  }
+
+  &__list {
+    margin-top: 20px;
   }
 
   &:before,
