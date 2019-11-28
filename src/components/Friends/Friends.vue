@@ -59,6 +59,7 @@ export default Vue.extend({
   background: $black;
   color: $white;
   padding: 20px;
+  z-index: 5;
 
   display: flex;
   flex-direction: column;
@@ -150,21 +151,21 @@ export default Vue.extend({
   }
 }
 
-@media (max-width: 1500px) {
-  .friends {
-    height: calc(100% + 10px);
+// @media (max-width: 1500px) {
+//   .friends {
+//     height: calc(100% + 10px);
 
-    &:before,
-    &:after {
-      height: 0;
-    }
-  }
-}
+//     &:before,
+//     &:after {
+//       height: 0;
+//     }
+//   }
+// }
 
-@media (max-height: 600px) {
-  .friends {
-    padding-top: 200px;
-    margin-left: -200px;
-  }
-}
+// @media (max-height: 600px) {
+//   .friends {
+//     padding-top: 200px;
+//     margin-left: -200px;
+//   }
+// }
 </style>

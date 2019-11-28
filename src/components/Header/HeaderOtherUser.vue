@@ -7,7 +7,7 @@
       <HeaderProfileContent class="header__content" />
       <div class="header__right-buttons">
         <ButtonHeader
-          to="/profile"
+          :to="'/users/' + profile.nickname"
           side="right"
           class="header__profile"
           @mouseover.native="fillProfileButton = 'white'"
@@ -15,13 +15,15 @@
         >
           <div class="header__profile-data">
             <span
-              :data-title="nickname.length > 16 ? nickname : undefined"
+              :data-title="
+                profile.nickname.length > 16 ? profile.nickname : undefined
+              "
               class="header__profile-nickname"
             >
               {{
-                nickname.length > 16
-                  ? nickname.substring(0, 16) + "..."
-                  : nickname
+                profile.nickname.length > 16
+                  ? profile.nickname.substring(0, 16) + "..."
+                  : profile.nickname
               }}
             </span>
             <span
@@ -104,7 +106,7 @@ export default Vue.extend({
       return {
         nickname: "Nagibator_123",
         status: "Роза упала на лапу Азора",
-        balance: 923456745454545454545
+        balance: 9234567
       };
     },
 
@@ -127,6 +129,11 @@ export default Vue.extend({
 
   &__title {
     margin: 35px 20px 20px 0;
+  }
+
+  .button-header > * {
+    justify-content: space-evenly;
+    width: 100%;
   }
 
   &__content {
@@ -156,6 +163,7 @@ export default Vue.extend({
   &__profile {
     margin: 10px 0 20px 20px;
     text-decoration: none;
+    min-width: 205px;
 
     &-data {
       display: flex;

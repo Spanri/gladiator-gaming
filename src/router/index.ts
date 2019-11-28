@@ -15,6 +15,7 @@ const routes = [
   {
     path: "/users/:nickname",
     component: () => import("@/views/User.vue"),
+    props: true,
     meta: {
       title: "Профиль"
     },
@@ -45,17 +46,33 @@ const routes = [
     ]
   },
   {
-    path: "login",
+    path: "/login",
     name: "login",
-    component: () => import("@/views/Auth.vue"),
+    component: () => import("@/views/Login.vue"),
     meta: {
       title: "Gladiator Gaming, вход"
+    }
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: () => import("@/views/Signup.vue"),
+    meta: {
+      title: "Gladiator Gaming, регистрация"
     }
   },
   {
     path: "/about",
     name: "about",
     component: () => import("@/views/About.vue"),
+    meta: {
+      title: "Gladiator Gaming, О сайте"
+    }
+  },
+  {
+    path: "*",
+    name: "other",
+    component: () => import("@/views/NotFound.vue"),
     meta: {
       title: "Gladiator Gaming, О сайте"
     }

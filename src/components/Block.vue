@@ -90,14 +90,14 @@ export default Vue.extend({
   }
 }
 
-@media (max-height: 600px) {
-  .block {
-    height: calc(100% + 10px);
+// @media (max-height: 600px) {
+//   .block {
+//     height: calc(100% + 10px);
 
-    &__before,
-    &__after {
-      height: 0;
-    }
-  }
-}
+//     &__before,
+//     &__after {
+//       height: 0;
+//     }
+//   }
+// }
 </style>

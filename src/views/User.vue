@@ -32,6 +32,10 @@ export default {
     ButtonLink: () => import("@/ui-components/ButtonLink.vue")
   },
 
+  props: {
+    nickname: String
+  },
+
   data() {
     return {
       my: true

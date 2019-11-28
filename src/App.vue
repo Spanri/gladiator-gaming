@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <main class="app__main">
-      <router-view class="app__main-inner" />
+      <transition name="fade">
+        <router-view class="app__main-inner" />
+      </transition>
     </main>
     <div class="app__block-wrapper">
       <Block class="app__block" />
@@ -9,7 +11,9 @@
     <div class="app__friends-wrapper">
       <Friends class="app__friends" />
     </div>
-    <Footer class="app__footer" />
+    <transition name="fade">
+      <Footer class="app__footer" />
+    </transition>
   </div>
 </template>
 
@@ -28,6 +32,14 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+.fade-enter-active {
+  transition: opacity 0.7s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   width: 100vw;
@@ -71,7 +83,9 @@ export default Vue.extend({
   }
 
   &__main {
-    margin: 0 auto auto;
+    margin: 0 auto 0;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;

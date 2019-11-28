@@ -5,8 +5,8 @@ import axios from "axios";
 Vue.use(Vuex);
 
 type ComplexObjectAuth = {
-    commit: any;
-    dispatch: any;
+  commit: any;
+  dispatch: any;
 };
 
 export default {
@@ -49,11 +49,22 @@ export default {
             token: "123456",
             user: {
               profile: {
-                firstName: "Елизавета",
-                lastName: "Иванникова",
-                patronymic: "Александровна",
-                phone: "123456",
-                email: "email@mail.ru",
+                nickname: "Nagibator_123",
+                photo: "Фото",
+                status: "Роза упала на лапу Азора",
+                socNetworks: {
+                  facebook: "w",
+                  youtube: "w",
+                  vk: "https://vk.com/animeshny_kot",
+                  twitter: "w",
+                  twitch: "w",
+                  instagram: "https://www.instagram.com/spanri",
+                  steam: "w",
+                  discord: "w"
+                },
+                csgo: {
+                  rating: 1234
+                }
               },
             },
           },
@@ -114,6 +125,6 @@ export default {
         delete axios.defaults.headers.common["Authorization"];
         resolve();
       });
-    },
-  },
-};
+    }
+  }
+}

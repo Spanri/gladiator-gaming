@@ -17,8 +17,8 @@ export default new Vuex.Store({
     createPersistedState(),
     createCache(),
     createMutationsSharer({ predicate: [
-      "auth_success", 
-      "logout",
+      // "auth_success", 
+      // "logout",
     ], }),
   ],
 });

@@ -7,7 +7,7 @@
       <HeaderProfileContent class="header__content" />
       <div class="header__right-buttons">
         <ButtonHeader
-          to="/profile"
+          :to="'/users/' + profile.nickname"
           side="right"
           class="header__profile"
           disabled

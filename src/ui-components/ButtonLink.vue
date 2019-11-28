@@ -26,7 +26,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.router-link-active {
+.router-link-exact-active {
   color: $white;
 
   &.button-link:before {

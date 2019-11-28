@@ -8,7 +8,11 @@
         чето
       </div>
       <div class="header__right-buttons">
-        <ButtonHeader to="/profile" side="right" class="header__profile">
+        <ButtonHeader
+          :to="'/users/' + profile.nickname"
+          side="right"
+          class="header__profile"
+        >
           <div class="header__profile-data">
             <span
               :data-title="nickname.length > 16 ? nickname : undefined"
