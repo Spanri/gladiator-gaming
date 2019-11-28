@@ -65,7 +65,7 @@ export default Vue.extend({
 
   &__button {
     min-width: 100px !important;
-    padding: 5px 10px !important;
+    padding: 7px 10px !important;
     margin: 0 auto;
 
     & > * {
@@ -73,7 +73,7 @@ export default Vue.extend({
     }
 
     & + & {
-      margin-top: 15px;
+      margin-top: 18px;
     }
   }
 

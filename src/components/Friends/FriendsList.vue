@@ -22,7 +22,6 @@ export default Vue.extend({
   name: "FriendsList",
 
   components: {
-    VuePerfectScrollbar: () => import("vue-perfect-scrollbar"),
     IconAdd: () => import("@/ui-components/icons/IconAdd.vue")
   },
 
@@ -44,18 +43,34 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.vb-dragger {
+// .vb-content {
+//   overflow: auto !important;
+// }
+
+.vb > .vb-dragger {
   z-index: 5;
   width: 12px;
   right: 0;
-  background: red none repeat scroll 0% 0% !important;
-
-  width: 5px !important;
-
-  right: 0;
+  background: red;
 }
+// .vb-visible {
+//   overflow: auto auto !important;
+//   padding: 20px;
+// }
+// .vb-content {
+//   overflow: initial !important;
+// }
+// .vb-dragger {
+//   display: none;
+// }
 
 .friends-list {
+  &-wrapper {
+    display: block;
+    width: auto;
+    height: 100vh;
+  }
+
   max-height: 300px;
 
   &__item {
