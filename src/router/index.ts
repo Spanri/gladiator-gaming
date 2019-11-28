@@ -13,8 +13,8 @@ const routes = [
     }
   },
   {
-    path: "/profile",
-    component: () => import("@/views/Profile.vue"),
+    path: "/users/:nickname",
+    component: () => import("@/views/User.vue"),
     meta: {
       title: "Профиль"
     },
@@ -23,7 +23,7 @@ const routes = [
         path: "",
         redirect: "games",
         meta: {
-          title: "Профиль, игры"
+          title: "Gladiator Gaming, профиль, игры"
         }
       },
       {
@@ -31,7 +31,7 @@ const routes = [
         name: "games",
         component: () => import("@/components/Profile/Games.vue"),
         meta: {
-          title: "Профиль, игры"
+          title: "Gladiator Gaming, профиль, игры"
         }
       },
       {
@@ -39,17 +39,25 @@ const routes = [
         name: "finances",
         component: () => import("@/components/Profile/Finances.vue"),
         meta: {
-          title: "Профиль, финансы"
+          title: "Gladiator Gaming, профиль, финансы"
         }
       },
     ]
+  },
+  {
+    path: "login",
+    name: "login",
+    component: () => import("@/views/Auth.vue"),
+    meta: {
+      title: "Gladiator Gaming, вход"
+    }
   },
   {
     path: "/about",
     name: "about",
     component: () => import("@/views/About.vue"),
     meta: {
-      title: "О сайте"
+      title: "Gladiator Gaming, О сайте"
     }
   }
 ];

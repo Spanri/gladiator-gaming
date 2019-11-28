@@ -54,22 +54,13 @@ export default Vue.extend({
   },
 
   computed: {
-    title() {
-      return (this as any).$route.meta.title;
-    },
-
+    // через mapgetters
     profile() {
       return {
         nickname: "Nagibator_123",
         status: "Роза упала на лапу Азора",
         balance: 922
       };
-    },
-
-    nickname() {
-      let nickname =
-        "Nagibator_134_million_alyh_roz_million_alyh_roz_million_alyh_roz";
-      return nickname;
     },
 
     balance() {
@@ -83,11 +74,8 @@ export default Vue.extend({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .header {
-  //@include buttonHeader;
-
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

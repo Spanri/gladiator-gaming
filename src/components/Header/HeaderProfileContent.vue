@@ -32,7 +32,6 @@
             <component :is="item.component" :fill="fill[index]" />
           </a>
         </div>
-        <!-- @mouseover="fill[index] = 'white'" @mouseleave="fill[index] = '#83E4E4'" -->
       </div>
     </section>
     <section class="content__rating">
@@ -84,14 +83,6 @@ export default Vue.extend({
   },
 
   computed: {
-    myProfile(): boolean {
-      return true;
-    },
-
-    title(): string {
-      return (this as any).$route.meta.title;
-    },
-
     socNetworks(): object {
       return [
         { component: "IconFacebook", network: "facebook", fill: "#1F78B4" },
@@ -142,10 +133,15 @@ export default Vue.extend({
   },
 
   methods: {
+    /**
+     * Наведение на иконку
+     */
     over(index: number) {
       Vue.set(this.fill, index, (this as any).socNetworks[index].fill);
     },
-
+    /**
+     * Убирание наведения на иконку
+     */
     leave(index: number) {
       Vue.set(this.fill, index, "#83E4E4");
     }

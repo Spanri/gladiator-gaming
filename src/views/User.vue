@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <component
-      :is="myProfile ? 'HeaderMyProfile' : 'HeaderOtherProfile'"
+      :is="myProfile ? 'HeaderMyProfile' : 'HeaderOtherUser'"
       class="profile__header"
     />
     <button @click="my = !my">Кнопка</button>
@@ -24,12 +24,11 @@
 
 <script>
 export default {
-  name: "Profile",
+  name: "User",
 
   components: {
     HeaderMyProfile: () => import("@/components/Header/HeaderMyProfile.vue"),
-    HeaderOtherProfile: () =>
-      import("@/components/Header/HeaderOtherProfile.vue"),
+    HeaderOtherUser: () => import("@/components/Header/HeaderOtherUser.vue"),
     ButtonLink: () => import("@/ui-components/ButtonLink.vue")
   },
 
