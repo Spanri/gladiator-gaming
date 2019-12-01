@@ -1,24 +1,28 @@
 <template>
   <div id="app">
-    <main class="app__main">
+    <div class="app-inner" v-if="!isNotFound">
+      <main class="app__main">
+        <transition name="fade">
+          <router-view class="app__main-inner" />
+        </transition>
+      </main>
+      <div class="app__block-wrapper">
+        <Block class="app__block" />
+      </div>
+      <div class="app__friends-wrapper">
+        <Friends class="app__friends" />
+      </div>
       <transition name="fade">
-        <router-view class="app__main-inner" />
+        <Footer class="app__footer" />
       </transition>
-    </main>
-    <div class="app__block-wrapper">
-      <Block class="app__block" />
     </div>
-    <div class="app__friends-wrapper">
-      <Friends class="app__friends" />
-    </div>
-    <transition name="fade">
-      <Footer class="app__footer" />
-    </transition>
+    <NotFound class="app__not-found" v-else />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { mapGetters } from "vuex";
 
 export default Vue.extend({
   name: "App",
@@ -26,7 +30,26 @@ export default Vue.extend({
   components: {
     Footer: () => import("@/components/Footer.vue"),
     Block: () => import("@/components/Block.vue"),
-    Friends: () => import("@/components/Friends/Friends.vue")
+    Friends: () => import("@/components/Friends/Friends.vue"),
+    NotFound: () => import("@/views/NotFound.vue")
+  },
+
+  computed: {
+    ...mapGetters(["isNotFound"])
+  },
+
+  watch: {
+    "$route.name": function(name) {
+      if (name == "other") {
+        this.$store.commit("setIsNotFound", true);
+      } else {
+        this.$store.commit("setIsNotFound", false);
+      }
+    }
+  },
+
+  mounted() {
+    this.$store.commit("setIsNotFound", false);
   }
 });
 </script>
@@ -42,22 +65,42 @@ export default Vue.extend({
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
-  width: 100vw;
-  min-height: 100vh;
+  // width: 100vw;
+  // min-height: 100vh;
 
   background-image: url("./assets/background.jpg");
   background-position: center 0%;
   background-repeat: no-repeat;
   background-size: cover;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // align-items: flex-start;
 }
 
 // @media (min-width: 1000px) {
 .app {
+  &-inner {
+    width: 100vw;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__not-found {
+    width: 100vw;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__block {
     position: fixed;
     top: calc((100% - 600px) / 2);

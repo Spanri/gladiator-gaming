@@ -7,6 +7,7 @@
         На главную
       </ButtonLink>
     </div>
+    <Footer class="not-found__footer" />
   </div>
 </template>
 
@@ -17,7 +18,8 @@ export default Vue.extend({
 
   components: {
     HeaderJustTitle: () => import("@/components/Header/HeaderJustTitle.vue"),
-    ButtonLink: () => import("@/ui-components/ButtonLink.vue")
+    ButtonLink: () => import("@/ui-components/ButtonLink.vue"),
+    Footer: () => import("@/components/Footer.vue")
   }
 });
 </script>
